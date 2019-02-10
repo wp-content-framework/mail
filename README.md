@@ -16,6 +16,7 @@
 
 ## 依存モジュール
 * [presenter](https://github.com/wp-content-framework/presenter)  
+* [tijsverkoyen/css-to-inline-styles](https://github.com/tijsverkoyen/CssToInlineStyles)
 
 # Author
 
