@@ -31,9 +31,9 @@ class Mail implements \WP_Framework_Core\Interfaces\Singleton, \WP_Framework_Cor
 	use Singleton, Hook, Presenter, Package;
 
 	/**
-	 * @var bool $_is_sending
+	 * @var bool $is_sending
 	 */
-	private $_is_sending = false;
+	private $is_sending = false;
 
 	/**
 	 * @param string $to
@@ -44,7 +44,7 @@ class Mail implements \WP_Framework_Core\Interfaces\Singleton, \WP_Framework_Cor
 	 * @return bool
 	 */
 	public function send( $to, $subject, $body, $text = false ) {
-		if ( $this->_is_sending || empty( $to ) || empty( $subject ) || ( empty( $body ) && empty( $text ) ) ) {
+		if ( $this->is_sending || empty( $to ) || empty( $subject ) || ( empty( $body ) && empty( $text ) ) ) {
 			return false;
 		}
 
@@ -60,21 +60,7 @@ class Mail implements \WP_Framework_Core\Interfaces\Singleton, \WP_Framework_Cor
 			$body['text/plain'] = $text;
 		}
 
-		$cssToInlineStyles = new CssToInlineStyles;
-		$messages          = [];
-		$content_type      = 'text/html';
-		foreach ( $body as $type => $message ) {
-			is_array( $message ) and $message = reset( $messages );
-			if ( 'text/html' === $type ) {
-				$message = $this->get_view( 'common/mail', [ 'subject' => $subject, 'body' => $message ] );
-				$message = $cssToInlineStyles->convert( $message );
-				$message = preg_replace( '/<\s*style.*?>[\s\S]*<\s*\/style\s*>/', '', $message );
-			} elseif ( 'text/plain' !== $type ) {
-				continue;
-			}
-			$messages[ $type ] = $message;
-			$content_type      = $type;
-		}
+		list( $messages, $content_type ) = $this->parse_body( $body, $subject );
 
 		if ( empty( $messages ) ) {
 			return false;
@@ -83,37 +69,74 @@ class Mail implements \WP_Framework_Core\Interfaces\Singleton, \WP_Framework_Cor
 			$content_type = 'multipart/alternative';
 		}
 
+		$this->fix_content_type( $messages, $content_type );
+
+		// suppress error
+		$this->app->input->set_server( 'SERVER_NAME', $this->app->input->server( 'SERVER_NAME', '' ) );
+
+		// is sending
+		$this->is_sending = true;
+
+		$result = wp_mail( $to, $subject, reset( $messages ) );
+
+		$this->is_sending = false;
+
+		return $result;
+	}
+
+	/**
+	 * @param array $body
+	 * @param string $subject
+	 *
+	 * @return array
+	 */
+	private function parse_body( $body, $subject ) {
+		$css          = new CssToInlineStyles();
+		$messages     = [];
+		$content_type = 'text/html';
+		foreach ( $body as $type => $message ) {
+			if ( is_array( $message ) ) {
+				$message = reset( $messages );
+			}
+			if ( 'text/html' === $type ) {
+				$message = $this->get_view( 'common/mail', [
+					'subject' => $subject,
+					'body'    => $message,
+				] );
+				$message = $css->convert( $message );
+				$message = preg_replace( '/<\s*style.*?>[\s\S]*<\s*\/style\s*>/', '', $message );
+			} elseif ( 'text/plain' !== $type ) {
+				continue;
+			}
+			$messages[ $type ] = $message;
+			$content_type      = $type;
+		}
+
+		return [ $messages, $content_type ];
+	}
+
+	/**
+	 * @param array $messages
+	 * @param string $content_type
+	 */
+	private function fix_content_type( $messages, $content_type ) {
 		// このチケットがマージされたら以下の処理は不要
 		// https://core.trac.wordpress.org/ticket/15448
 
 		add_action( 'phpmailer_init', $set_phpmailer = function ( $phpmailer ) use ( &$set_phpmailer, $messages, $content_type ) {
 			/** @var PHPMailer $phpmailer */
 			remove_action( 'phpmailer_init', $set_phpmailer );
-			$phpmailer->Body    = '';
-			$phpmailer->AltBody = '';
+			$phpmailer->Body    = ''; // phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
+			$phpmailer->AltBody = ''; // phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 			foreach ( $messages as $type => $message ) {
 				if ( 'text/html' === $type ) {
-					$phpmailer->Body = $message;
+					$phpmailer->Body = $message; // phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 				} elseif ( 'text/plain' === $type ) {
-					$phpmailer->AltBody = $message;
+					$phpmailer->AltBody = $message; // phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 				}
 			}
-			$phpmailer->ContentType = $content_type;
+			$phpmailer->ContentType = $content_type; // phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 		} );
-
-		// suppress error
-		if ( ! isset( $_SERVER['SERVER_NAME'] ) ) {
-			$_SERVER['SERVER_NAME'] = '';
-		}
-
-		// is sending
-		$this->_is_sending = true;
-
-		$result = wp_mail( $to, $subject, reset( $messages ) );
-
-		$this->_is_sending = false;
-
-		return $result;
 	}
 
 	/**
@@ -121,11 +144,11 @@ class Mail implements \WP_Framework_Core\Interfaces\Singleton, \WP_Framework_Cor
 	 */
 	private function remove_special_space( &$str ) {
 		if ( is_array( $str ) ) {
-			foreach ( $str as $k => $v ) {
-				$this->remove_special_space( $str[ $k ] );
+			foreach ( array_keys( $str ) as $key ) {
+				$this->remove_special_space( $str[ $key ] );
 			}
 		} else {
-			$specialSpace = [
+			$special_space = [
 				"\xC2\xA0",
 				"\xE1\xA0\x8E",
 				"\xE2\x80\x80",
@@ -144,16 +167,18 @@ class Mail implements \WP_Framework_Core\Interfaces\Singleton, \WP_Framework_Cor
 				"\xE2\x81\x9F",
 				"\xEF\xBB\xBF",
 			];
-			$str          = str_replace( $specialSpace, " ", $str );
+			$str           = str_replace( $special_space, ' ', $str );
 		}
 	}
 
 	/**
 	 * @param WP_Error $wp_error
+	 *
+	 * @noinspection PhpUnusedPrivateMethodInspection
+	 * @SuppressWarnings(PHPMD.UnusedPrivateMethod)
 	 */
-	/** @noinspection PhpUnusedPrivateMethodInspection */
 	private function wp_mail_failed( WP_Error $wp_error ) {
-		if ( $this->_is_sending ) {
+		if ( $this->is_sending ) {
 			$this->app->log( $wp_error );
 		}
 	}
@@ -162,10 +187,11 @@ class Mail implements \WP_Framework_Core\Interfaces\Singleton, \WP_Framework_Cor
 	 * @param string $from_email
 	 *
 	 * @return string
+	 * @noinspection PhpUnusedPrivateMethodInspection
+	 * @SuppressWarnings(PHPMD.UnusedPrivateMethod)
 	 */
-	/** @noinspection PhpUnusedPrivateMethodInspection */
 	private function wp_mail_from( $from_email ) {
-		if ( $this->_is_sending ) {
+		if ( $this->is_sending ) {
 			$value = $this->apply_filters( 'mail_from' );
 			if ( ! empty( $value ) ) {
 				return $value;
@@ -179,10 +205,11 @@ class Mail implements \WP_Framework_Core\Interfaces\Singleton, \WP_Framework_Cor
 	 * @param string $from_name
 	 *
 	 * @return string
+	 * @noinspection PhpUnusedPrivateMethodInspection
+	 * @SuppressWarnings(PHPMD.UnusedPrivateMethod)
 	 */
-	/** @noinspection PhpUnusedPrivateMethodInspection */
 	private function wp_mail_from_name( $from_name ) {
-		if ( $this->_is_sending ) {
+		if ( $this->is_sending ) {
 			$value = $this->apply_filters( 'mail_from_name' );
 			if ( ! empty( $value ) ) {
 				return $value;
