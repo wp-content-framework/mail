@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "130803925cf8a8bbd1e1184db32ded43",
+    "content-hash": "689996325553eb46c8d3f5804d0b8a3f",
     "packages": [
         {
             "name": "matthiasmullie/minify",
@@ -219,16 +219,16 @@
         },
         {
             "name": "wp-content-framework/presenter",
-            "version": "v0.0.22",
+            "version": "v1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-content-framework/presenter.git",
-                "reference": "988d879858357e1e39770bb30baf3b2ec4085e32"
+                "reference": "abc0e7fa70fbae17780b255fd3dddbdf5adb15a4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-content-framework/presenter/zipball/988d879858357e1e39770bb30baf3b2ec4085e32",
-                "reference": "988d879858357e1e39770bb30baf3b2ec4085e32",
+                "url": "https://api.github.com/repos/wp-content-framework/presenter/zipball/abc0e7fa70fbae17780b255fd3dddbdf5adb15a4",
+                "reference": "abc0e7fa70fbae17780b255fd3dddbdf5adb15a4",
                 "shasum": ""
             },
             "require": {
@@ -260,7 +260,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2020-01-02T08:26:52+00:00"
+            "time": "2020-01-07T17:29:14+00:00"
         }
     ],
     "packages-dev": [
