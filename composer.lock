@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "291f3d8a5c21d7ad2c01c94e860c7f71",
+    "content-hash": "7ad3ab492bde55c786329f4603a62ef1",
     "packages": [
         {
             "name": "matthiasmullie/minify",
@@ -233,16 +233,16 @@
         },
         {
             "name": "wp-content-framework/presenter",
-            "version": "v1.0.10",
+            "version": "v1.0.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-content-framework/presenter.git",
-                "reference": "819d81d66304aa1cd8f0676ba16fca051d7c3caa"
+                "reference": "c1e1538565d12e21c5b173633c1f4064d9f51d0d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-content-framework/presenter/zipball/819d81d66304aa1cd8f0676ba16fca051d7c3caa",
-                "reference": "819d81d66304aa1cd8f0676ba16fca051d7c3caa",
+                "url": "https://api.github.com/repos/wp-content-framework/presenter/zipball/c1e1538565d12e21c5b173633c1f4064d9f51d0d",
+                "reference": "c1e1538565d12e21c5b173633c1f4064d9f51d0d",
                 "shasum": ""
             },
             "require": {
@@ -280,7 +280,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2020-06-22T17:55:21+00:00"
+            "time": "2020-06-23T16:37:49+00:00"
         }
     ],
     "packages-dev": [
@@ -344,22 +344,22 @@
         },
         {
             "name": "dealerdirect/phpcodesniffer-composer-installer",
-            "version": "v0.6.2",
+            "version": "v0.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Dealerdirect/phpcodesniffer-composer-installer.git",
-                "reference": "8001af8eb107fbfcedc31a8b51e20b07d85b457a"
+                "reference": "e8d808670b8f882188368faaf1144448c169c0b7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Dealerdirect/phpcodesniffer-composer-installer/zipball/8001af8eb107fbfcedc31a8b51e20b07d85b457a",
-                "reference": "8001af8eb107fbfcedc31a8b51e20b07d85b457a",
+                "url": "https://api.github.com/repos/Dealerdirect/phpcodesniffer-composer-installer/zipball/e8d808670b8f882188368faaf1144448c169c0b7",
+                "reference": "e8d808670b8f882188368faaf1144448c169c0b7",
                 "shasum": ""
             },
             "require": {
-                "composer-plugin-api": "^1.0",
-                "php": "^5.3|^7",
-                "squizlabs/php_codesniffer": "^2|^3"
+                "composer-plugin-api": "^1.0 || ^2.0",
+                "php": ">=5.3",
+                "squizlabs/php_codesniffer": "^2 || ^3 || 4.0.x-dev"
             },
             "require-dev": {
                 "composer/composer": "*",
@@ -406,7 +406,7 @@
                 "stylecheck",
                 "tests"
             ],
-            "time": "2020-01-29T20:22:20+00:00"
+            "time": "2020-06-25T14:57:39+00:00"
         },
         {
             "name": "pdepend/pdepend",
