@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8122c733c47bfc1e2f29a38207fb1db9",
+    "content-hash": "253a18c5d8767a69860a0485189c1054",
     "packages": [
         {
             "name": "matthiasmullie/minify",
@@ -243,16 +243,16 @@
         },
         {
             "name": "wp-content-framework/presenter",
-            "version": "v1.0.25",
+            "version": "v1.0.26",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-content-framework/presenter.git",
-                "reference": "1335e5f1d8ffb1791e9d0ab17e05f0398c4a2297"
+                "reference": "4e78874d143cca4cb031920596e97a6f6bc1908c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-content-framework/presenter/zipball/1335e5f1d8ffb1791e9d0ab17e05f0398c4a2297",
-                "reference": "1335e5f1d8ffb1791e9d0ab17e05f0398c4a2297",
+                "url": "https://api.github.com/repos/wp-content-framework/presenter/zipball/4e78874d143cca4cb031920596e97a6f6bc1908c",
+                "reference": "4e78874d143cca4cb031920596e97a6f6bc1908c",
                 "shasum": ""
             },
             "require": {
@@ -286,7 +286,7 @@
             ],
             "support": {
                 "issues": "https://github.com/wp-content-framework/presenter/issues",
-                "source": "https://github.com/wp-content-framework/presenter/tree/v1.0.25"
+                "source": "https://github.com/wp-content-framework/presenter/tree/v1.0.26"
             },
             "funding": [
                 {
@@ -294,7 +294,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2020-11-30T08:58:14+00:00"
+            "time": "2020-12-07T04:40:52+00:00"
         }
     ],
     "packages-dev": [
@@ -363,22 +363,22 @@
         },
         {
             "name": "dealerdirect/phpcodesniffer-composer-installer",
-            "version": "v0.7.0",
+            "version": "v0.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Dealerdirect/phpcodesniffer-composer-installer.git",
-                "reference": "e8d808670b8f882188368faaf1144448c169c0b7"
+                "reference": "fe390591e0241955f22eb9ba327d137e501c771c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Dealerdirect/phpcodesniffer-composer-installer/zipball/e8d808670b8f882188368faaf1144448c169c0b7",
-                "reference": "e8d808670b8f882188368faaf1144448c169c0b7",
+                "url": "https://api.github.com/repos/Dealerdirect/phpcodesniffer-composer-installer/zipball/fe390591e0241955f22eb9ba327d137e501c771c",
+                "reference": "fe390591e0241955f22eb9ba327d137e501c771c",
                 "shasum": ""
             },
             "require": {
                 "composer-plugin-api": "^1.0 || ^2.0",
                 "php": ">=5.3",
-                "squizlabs/php_codesniffer": "^2 || ^3 || 4.0.x-dev"
+                "squizlabs/php_codesniffer": "^2.0 || ^3.0 || ^4.0"
             },
             "require-dev": {
                 "composer/composer": "*",
@@ -429,7 +429,7 @@
                 "issues": "https://github.com/dealerdirect/phpcodesniffer-composer-installer/issues",
                 "source": "https://github.com/dealerdirect/phpcodesniffer-composer-installer"
             },
-            "time": "2020-06-25T14:57:39+00:00"
+            "time": "2020-12-07T18:04:37+00:00"
         },
         {
             "name": "pdepend/pdepend",
