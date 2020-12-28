@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "matthiasmullie/minify",
-            "version": "1.3.63",
+            "version": "1.3.65",
             "source": {
                 "type": "git",
                 "url": "https://github.com/matthiasmullie/minify.git",
-                "reference": "9ba1b459828adc13430f4dd6c49dae4950dc4117"
+                "reference": "227f19062451c55a797e0cc667ef983834e6580c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/matthiasmullie/minify/zipball/9ba1b459828adc13430f4dd6c49dae4950dc4117",
-                "reference": "9ba1b459828adc13430f4dd6c49dae4950dc4117",
+                "url": "https://api.github.com/repos/matthiasmullie/minify/zipball/227f19062451c55a797e0cc667ef983834e6580c",
+                "reference": "227f19062451c55a797e0cc667ef983834e6580c",
                 "shasum": ""
             },
             "require": {
@@ -66,9 +66,23 @@
             ],
             "support": {
                 "issues": "https://github.com/matthiasmullie/minify/issues",
-                "source": "https://github.com/matthiasmullie/minify/tree/1.3.63"
+                "source": "https://github.com/matthiasmullie/minify/tree/1.3.65"
             },
-            "time": "2020-01-21T20:21:08+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/[user1",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/matthiasmullie] # Replace with up to 4 GitHub Sponsors-enabled usernames e.g.",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/user2",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-12-27T21:43:29+00:00"
         },
         {
             "name": "matthiasmullie/path-converter",
@@ -243,16 +257,16 @@
         },
         {
             "name": "wp-content-framework/presenter",
-            "version": "v1.0.27",
+            "version": "v1.0.28",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-content-framework/presenter.git",
-                "reference": "b13deddc61a6b10edbee3a43390d917ee8dbfcbd"
+                "reference": "f6c5cba22143118076c0476024e43cec66ef856b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-content-framework/presenter/zipball/b13deddc61a6b10edbee3a43390d917ee8dbfcbd",
-                "reference": "b13deddc61a6b10edbee3a43390d917ee8dbfcbd",
+                "url": "https://api.github.com/repos/wp-content-framework/presenter/zipball/f6c5cba22143118076c0476024e43cec66ef856b",
+                "reference": "f6c5cba22143118076c0476024e43cec66ef856b",
                 "shasum": ""
             },
             "require": {
@@ -286,7 +300,7 @@
             ],
             "support": {
                 "issues": "https://github.com/wp-content-framework/presenter/issues",
-                "source": "https://github.com/wp-content-framework/presenter/tree/v1.0.27"
+                "source": "https://github.com/wp-content-framework/presenter/tree/v1.0.28"
             },
             "funding": [
                 {
@@ -294,7 +308,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2020-12-14T14:03:10+00:00"
+            "time": "2020-12-21T10:03:05+00:00"
         }
     ],
     "packages-dev": [
