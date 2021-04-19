@@ -257,16 +257,16 @@
         },
         {
             "name": "wp-content-framework/presenter",
-            "version": "v1.0.38",
+            "version": "v1.0.39",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-content-framework/presenter.git",
-                "reference": "0a93c168506b7b9d76f6d2876d5fda7995ed7a0d"
+                "reference": "7f5ba649cff13c9b79781e2447096b95e6e9a4ce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-content-framework/presenter/zipball/0a93c168506b7b9d76f6d2876d5fda7995ed7a0d",
-                "reference": "0a93c168506b7b9d76f6d2876d5fda7995ed7a0d",
+                "url": "https://api.github.com/repos/wp-content-framework/presenter/zipball/7f5ba649cff13c9b79781e2447096b95e6e9a4ce",
+                "reference": "7f5ba649cff13c9b79781e2447096b95e6e9a4ce",
                 "shasum": ""
             },
             "require": {
@@ -277,7 +277,7 @@
                 "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
                 "phpcompatibility/phpcompatibility-wp": "^2.1",
                 "phpmd/phpmd": "^2.9",
-                "squizlabs/php_codesniffer": "^3.5",
+                "squizlabs/php_codesniffer": "^3.6",
                 "wp-coding-standards/wpcs": "^2.3"
             },
             "type": "library",
@@ -300,7 +300,7 @@
             ],
             "support": {
                 "issues": "https://github.com/wp-content-framework/presenter/issues",
-                "source": "https://github.com/wp-content-framework/presenter/tree/v1.0.38"
+                "source": "https://github.com/wp-content-framework/presenter/tree/v1.0.39"
             },
             "funding": [
                 {
@@ -308,7 +308,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2021-04-05T05:29:44+00:00"
+            "time": "2021-04-13T03:28:09+00:00"
         }
     ],
     "packages-dev": [
@@ -448,16 +448,16 @@
         },
         {
             "name": "pdepend/pdepend",
-            "version": "2.9.0",
+            "version": "2.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pdepend/pdepend.git",
-                "reference": "b6452ce4b570f540be3a4f46276dd8d8f4fa5ead"
+                "reference": "1632f0cee84512ffd6dde71e58536b3b06528c41"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pdepend/pdepend/zipball/b6452ce4b570f540be3a4f46276dd8d8f4fa5ead",
-                "reference": "b6452ce4b570f540be3a4f46276dd8d8f4fa5ead",
+                "url": "https://api.github.com/repos/pdepend/pdepend/zipball/1632f0cee84512ffd6dde71e58536b3b06528c41",
+                "reference": "1632f0cee84512ffd6dde71e58536b3b06528c41",
                 "shasum": ""
             },
             "require": {
@@ -493,7 +493,7 @@
             "description": "Official version of pdepend to be handled with Composer",
             "support": {
                 "issues": "https://github.com/pdepend/pdepend/issues",
-                "source": "https://github.com/pdepend/pdepend/tree/2.9.0"
+                "source": "https://github.com/pdepend/pdepend/tree/2.9.1"
             },
             "funding": [
                 {
@@ -501,7 +501,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-03-11T09:20:40+00:00"
+            "time": "2021-04-15T21:36:28+00:00"
         },
         {
             "name": "phpcompatibility/php-compatibility",
